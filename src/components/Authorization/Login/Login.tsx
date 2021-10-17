@@ -2,13 +2,9 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Login.scss'
 import Input from "../../../utils/Input";
-import UserService from "../../../service/user.service"
-import {useDispatch} from "react-redux";
-import {setUser} from "../../../store/reducers/user.reducer";
+import UserController from "../../../controller/user.controller";
 
 const Login = () => {
-
-  const dispatch = useDispatch()
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -24,9 +20,7 @@ const Login = () => {
           <Input placeholder={'Password'} type={'text'} value={password} setValue={setPassword}/>
         </div>
         <button className="login__submit" onClick={ async () => {
-          const data = await UserService.login(email,password)
-          dispatch(setUser(data))
-
+          await UserController.login(email,password)
         }}>Log in</button>
         <div className="login__reroute">
           <span>You`re new? <Link to={'/registration'}>Sign up</Link></span>
