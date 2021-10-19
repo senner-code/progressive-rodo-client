@@ -19,6 +19,7 @@ export const userSlice = createSlice({
       state.email = user.payload.email
       state.name = user.payload.name
     },
+
     setAuthManual: (state, action: PayloadAction<boolean>) => {
       state.isAuth = action.payload
     }

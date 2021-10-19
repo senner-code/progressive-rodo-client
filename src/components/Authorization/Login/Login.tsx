@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Login.scss'
 import Input from "../../../utils/Input";
 import UserController from "../../../controller/user.controller";
 
-const Login = () => {
+const Login = (props:any) => {
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -20,7 +20,9 @@ const Login = () => {
           <Input placeholder={'Password'} type={'text'} value={password} setValue={setPassword}/>
         </div>
         <button className="login__submit" onClick={ async () => {
-          await UserController.login(email,password)
+          UserController.login(email,password).then((data) => {
+            if(data)props.history.push('/dashboard')
+          })
         }}>Log in</button>
         <div className="login__reroute">
           <span>You`re new? <Link to={'/registration'}>Sign up</Link></span>
