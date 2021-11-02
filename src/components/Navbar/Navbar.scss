@@ -1,0 +1,130 @@
+.navbar {
+  background-color: rgba(157, 157, 157, 0.37);
+  width: 15%;
+  color: #1a1b1b;
+
+  &__logout {
+    margin-left: 5px;
+  }
+
+  &__user {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &_active {
+      border-bottom: 1px solid rgba(100, 100, 100, 0.22);
+    }
+
+
+    &__logo {
+      color: #F2f2f2;
+      margin-right: 10px;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: darkorange;
+    }
+  }
+
+  &__hidden{
+    left: -25%;
+    transition: 1s all;
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__data {
+    overflow: scroll;
+
+    &::-webkit-scrollbar { /* chrome based */
+      width: 0;
+      background: transparent;  /* опционально */
+    }
+
+
+    -ms-overflow-style: none;  /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(98, 98, 98, 0.15);
+    padding-bottom: 20px;
+    &__title{
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      height: 40px;
+      margin-top: 10px;
+      &:hover {
+        background-color: rgba(162, 162, 162, 0.13);
+      }
+      &__container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 20px;
+        p {
+          margin: 0;
+        }
+      }
+      svg {
+        width: 25px;
+        height: 25px;
+        margin-right: 15px;
+      }
+    }
+    &__sun {
+      fill: rgba(134, 134, 80, 0.76);
+    }
+    &__calendar {
+      fill: rgba(49, 104, 161, 0.82);
+    }
+
+    &__star {
+      fill: rgba(185, 125, 55, 0.73);
+    }
+
+    &__task {
+      fill: rgba(49, 155, 134, 0.74);
+    }
+  }
+
+  &_add {
+    border-top: 1px solid rgba(114, 114, 114, 0.35);
+    position: relative;
+    bottom: 0;
+    background-color: inherit;
+    &:hover {
+      background-color: rgba(162, 162, 162, 0.13);
+    }
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__title {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      margin-right: 20px;
+    }
+  }
+
+}

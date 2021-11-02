@@ -5,11 +5,12 @@ interface InputProps {
   type: string,
   value: any,
   setValue: (value: string) => void
+  id?: string
 }
 
 const Input:FC<InputProps> = (props:InputProps) => {
   return (
-    <input type={props.type} placeholder={props.placeholder} value={props.value}
+    <input id={props.id} type={props.type} placeholder={props.placeholder} value={props.value}
            onChange={(event: ChangeEvent<HTMLInputElement>) => props.setValue(event.currentTarget.value)}/>
   );
 };

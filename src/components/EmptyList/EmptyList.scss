@@ -1,0 +1,13 @@
+.card-item {
+  &_empty {
+    justify-content: center;
+    align-items: center;
+    &__title {
+      color: #F2f2f2;
+      font-size: 25px;
+      line-height: 2;
+    }
+  }
+
+
+}

@@ -11,7 +11,7 @@ const Router:FC = () => {
       {privateRoutes.map((route:Routes,index) => {
         return <Route key={index} path={route.path} component={route.component} exact={route.exact}/>
       })}
-      <Redirect to={'/'}/>
+      <Redirect to={'/dashboard'}/>
     </Switch>
     :
     <Switch>

@@ -2,7 +2,7 @@ import $api from "../api";
 
 class CardService {
 
-  static async getAll<T>(user_id: number) {
+  static async getAll(user_id: number) {
     try {
       return (await $api.get<any>(`/auth/card/get_all/${user_id}`)).data
     }catch (e) {

@@ -2,11 +2,16 @@ import React, {FC, useEffect, useState} from 'react';
 
 import Router from "./Router/Router";
 import UserController from "../controller/user.controller";
+import {useSelector} from "react-redux";
+import {RootState} from "../store/store";
+import Navbar from "./Navbar/Navbar";
+import './App.scss'
 
 const App: FC = () => {
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const isAuth = useSelector((state: RootState) => state.user.isAuth)
 
+  const [loading, setLoading] = useState<boolean>(false)
 
 
   useEffect(() => {
@@ -21,7 +26,11 @@ const App: FC = () => {
 
   return (
     <div className={`app`}>
-      {loading ? <Router/> : 'Добавить крутилку'}
+      {loading ?
+        <React.Fragment>
+          {isAuth ? <Navbar/> : null}
+          <Router/>
+        </React.Fragment> : 'Добавить крутилку'}
     </div>
   );
 };
