@@ -1,7 +1,7 @@
 import React, {ReactChildren} from "react";
 import Login from "../components/Authorization/Login/Login";
 import Registration from "../components/Authorization/Registration/Registration";
-import CardItem from "../components/CardList/CardItem/CardItem";
+import TaskList from "../components/CardList/TaskList/TaskList";
 import EmptyList from "../components/EmptyList/EmptyList";
 
 export interface Routes {
@@ -18,5 +18,5 @@ export const publicRoutes:Routes[] = [
 
 export const privateRoutes:Routes[] = [
   {exact: true, path: '/dashboard', component: EmptyList},
-  {exact: true, path:'/dashboard/card/:card_id', component: CardItem}
+  {exact: true, path:'/dashboard/card/:card_id/:card_name', component: TaskList}
 ]

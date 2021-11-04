@@ -17,6 +17,7 @@ const Navbar: FC = () => {
 
   const [hidden] = useState<boolean>(false)
 
+
   const user: User = useSelector((state: RootState) => state.user)
 
   return loading ?
