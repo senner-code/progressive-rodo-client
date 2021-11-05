@@ -1,0 +1,14 @@
+.task-menu {
+  width: 30%;
+  box-sizing: border-box;
+
+  padding: 40px;
+
+  background-color: #F2f2f2;
+
+  &__title {
+    word-break: break-word;
+    margin: 0;
+  }
+
+}

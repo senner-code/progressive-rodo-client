@@ -10,6 +10,10 @@
   display: flex;
   margin-bottom: 8px;
 
+  &_active {
+    background-color: rgba(211, 211, 211, 0.61);
+  }
+
   &__title {
     word-break: break-word;
     margin: 0;
@@ -17,6 +21,7 @@
 
 
   &__info {
+    width: 95%;
     display: flex;
     flex-direction: column;
 
