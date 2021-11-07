@@ -1,0 +1,12 @@
+.task-page {
+  width: 82%;
+  box-sizing: border-box;
+  background: rgba(95, 147, 147, 0.84);
+  &__container {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

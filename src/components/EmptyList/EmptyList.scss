@@ -1,4 +1,9 @@
-.task-list {
+.task-page {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &_empty {
     justify-content: center;
     align-items: center;

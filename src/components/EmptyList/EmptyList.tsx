@@ -3,8 +3,8 @@ import './EmptyList.scss'
 
 const EmptyList:FC = () => {
   return (
-    <div className={'task-list task-list_empty'}>
-      <h1 className={'task-list_empty__title'}>Don`t see anything? <br/> Choose / Create list and start!
+    <div className={'task-page task-page_empty'}>
+      <h1 className={'task-page_empty__title'}>Don`t see anything? <br/> Choose / Create list and start!
       </h1>
     </div>
   );
