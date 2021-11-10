@@ -18,7 +18,7 @@
   &__container {
 
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -34,12 +34,38 @@
     }
   }
 
+  &__title {
+
+    &_active {
+      display: flex;
+      align-items: center;
+      &_text {
+        outline: none;
+        border: none;
+        font-size: 24px;
+        color: #FFFFFF;
+        background-color: inherit;
+      }
+      &_button {
+        border-radius: 5px;
+        background-color: cadetblue;
+        color: #FFFFFF;
+        padding: 15px;
+        border: none;
+        margin-left: 10px;
+      }
+    }
+  }
+
   &__name {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     & h3 {
       margin: 0;
     }
     padding: 20px 0;
-    width: 100%;
     color: #FFF;
     font-size: 25px;
   }
@@ -54,6 +80,13 @@
       width: 90%;
       display: flex;
       align-items: center;
+      &_active {
+        width: 65%;
+      }
+    }
+    &_calendar {
+      height: 30px;
+      width: 30px;
     }
   }
   &_input {

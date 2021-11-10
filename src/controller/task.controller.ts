@@ -1,6 +1,6 @@
 import TaskService from "../service/task.service";
 import {store} from "../store/store";
-import {addTask, changeTask, setTaskList} from "../store/reducers/task.reducer";
+import {addTask, changeTask, deleteTask, setTaskList} from "../store/reducers/task.reducer";
 
 export interface TaskI {
   id: number,
@@ -23,27 +23,16 @@ class TaskController {
   static async getAll(card_id: number): Promise<any> {
     try {
       return TaskService.getAll(card_id).then(taskList => {
-
-        const tempMassive:TaskI[] = []
-
-        const sortedList = taskList.filter((elem) => {
-          if(elem.completed){
-            return elem
-          }
-          tempMassive.push(elem)
-        })
-
-        store.dispatch(setTaskList([...tempMassive ,...sortedList]))
-
+        store.dispatch(setTaskList(taskList))
       })
     } catch (e) {
       throw e
     }
   }
 
-  static async add(card_id: number, name: string): Promise<any> {
+  static async add(card_id: number, name: string, deadline:string): Promise<any> {
     try {
-      return TaskService.add(card_id, name).then((task) => {
+      return TaskService.add(card_id, name, deadline).then((task) => {
         store.dispatch(addTask(task))
       })
     } catch (e) {
@@ -61,6 +50,30 @@ class TaskController {
     }
   }
 
+  static async deleteTask(task_id:number,index: number): Promise<any> {
+    try {
+      return TaskService.deleteTask(task_id).then(() => {
+        store.dispatch(deleteTask({index}))
+      })
+    }catch (e) {
+      throw e
+    }
+  }
+
+  static async changeTitle(title: string, task_id: number, index: number) {
+    TaskService.changeTitle(task_id, title).then((task: TaskI) => {
+      // const newTask:TaskI = Object.assign({}, task)
+      // newTask.title = title
+      store.dispatch(changeTask({task, index}))
+    })
+  }
+
+  static async changeDeadline(task_id:number, deadline:string | null, index: number):Promise<any> {
+    return TaskService.changeDeadline(task_id, deadline).then((task) => {
+      console.log(task)
+      return store.dispatch(changeTask({task, index}))
+    })
+  }
 }
 
 export default TaskController

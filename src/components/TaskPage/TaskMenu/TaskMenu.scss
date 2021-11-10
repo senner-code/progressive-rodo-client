@@ -1,10 +1,10 @@
 .task-menu {
   width: 30%;
   box-sizing: border-box;
-
-  padding: 10px;
-
   background-color: #F2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &__checkbox {
     width: 30px;
@@ -14,6 +14,8 @@
   &__close {
     width: 100%;
     display: flex;
+    padding: 20px 20px 5px 0;
+    box-sizing: border-box;
     justify-content: flex-end;
     &_img {
       background-image: url("../../../img/universal/close.png");
@@ -25,17 +27,125 @@
     }
   }
 
-  &__title {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid rgba(169, 169, 169, 0.35);
+
+  &__info {
+    color: rgba(91, 91, 91, 0.86);
+    height: 100%;
+    &-border {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid rgba(150, 150, 150, 0.35);
+    }
+    margin-top: 10px;
     display: flex;
-    align-items: center;
-    &_text {
-      font-size: 16px;
-      word-break: break-word;
-      margin: 0;
+    padding: 10px 20px;
+    flex-direction: column;
+    &__title-page {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      &__text {
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+        word-break: break-word;
+        margin: 0;
+      }
+
+      &_change-title {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        & input {
+          width: 150px;
+          word-break: break-word;
+          outline: none;
+          border: none;
+          font-size: 16px;
+          background-color: #F2f2f2;
+        }
+
+        &_confirm {
+          border: none;
+          border-radius: 5px;
+          background-color: cadetblue;
+          padding: 10px;
+          color: #fff;
+        }
+
+      }
+    }
+    &__deadline {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &_button {
+        border: none;
+        background-color: cadetblue;
+        color: #FFFFFF;
+        margin-left: 10px;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+
+      &_svg {
+        height: 20px;
+        width: 20px;
+      }
+
+      &_time {
+        font-size: 14px;
+        margin: 0 0 0 10px;
+        &_continue {
+          color: #70a8a9;
+        }
+        &_end {
+          color: red;
+        }
+        &_done {
+          color: green;
+        }
+      }
+    }
+    &__description {
+      overflow: scroll;
+      &::-webkit-scrollbar { /* chrome based */
+        width: 0;
+        background: transparent;  /* опционально */
+      }
+
+      -ms-overflow-style: none;  /* IE 10+ */
+      scrollbar-width: none; /* Firefox */
+      height: 10%;
+      &_text {
+        font-size: 14px;
+        word-break: break-word;
+        margin: 0;
+      }
+    }
+    &__day {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      & svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+  &__delete {
+    border-top: 1px solid rgba(169, 169, 169, 0.35);
+    display: flex;
+    justify-content: flex-end;
+    svg {
+      cursor: pointer;
+      padding: 20px;
+      height: 20px;
+      width: 20px;
     }
   }
 

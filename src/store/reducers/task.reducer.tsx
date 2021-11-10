@@ -1,6 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {TaskElem, TaskI} from "../../controller/task.controller";
 
+interface indexI {
+  index: number
+}
+
 const initialState: TaskI[] = []
 
 export const taskSlice = createSlice({
@@ -19,9 +23,13 @@ export const taskSlice = createSlice({
     addTask: (state, action:PayloadAction<TaskI>) => {
       state.push(action.payload)
     },
+
+    deleteTask: (state, action:PayloadAction<indexI>) => {
+      state.splice(action.payload.index, 1)
+    },
   }
 })
 
-export const {setTaskList, changeTask, addTask} = taskSlice.actions
+export const {setTaskList, changeTask, addTask, deleteTask} = taskSlice.actions
 
 export default taskSlice.reducer

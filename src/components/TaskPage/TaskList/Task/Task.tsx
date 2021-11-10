@@ -2,6 +2,7 @@ import React, {FC, useContext, useEffect, useState} from 'react';
 import TaskController, {TaskElem,} from "../../../../controller/task.controller";
 import './Task.scss'
 import {SelectedTask} from "../../TaskPage";
+import {options} from "../../TaskMenu/TaskMenu";
 
 const Task: FC<TaskElem> = (
   {
@@ -12,11 +13,21 @@ const Task: FC<TaskElem> = (
 
   const indexControl = useContext(SelectedTask)
 
+  const [deadline, setDeadline] = useState<string>('')
+
   const [completedTask, setCompletedTask] = useState<boolean>(task.completed)
 
   const [selected] = useState<boolean>(false)
 
+
+
   useEffect(() => {
+    if(task?.deadline){
+      setDeadline(new Date(Date.parse(task.deadline))
+        // @ts-ignore
+        .toLocaleString('en-us', {...options, year: undefined})
+      )
+    }
     setCompletedTask(task.completed)
   },[task])
 
@@ -41,7 +52,13 @@ const Task: FC<TaskElem> = (
           }
         }}>
           <p className={'task__title'}>{task.title}</p>
-          <p className={'task__deadline'}>{task.deadline}</p>
+          <p className={`task__deadline ${task.completed && task.deadline? 'task__deadline_done'
+            : task.deadline ?
+              Date.parse(task.deadline) <= Date.now() ?
+                'task__deadline_end'
+                : ''
+              : 'task__deadline_continue'}`}
+          >{deadline}</p>
         </div>
       </div>
   );

@@ -21,12 +21,6 @@ const TaskPage = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(-1)
 
   useEffect(() => {
-    return () => {
-      setCurrentIndex(-1)
-    }
-  },[])
-
-  useEffect(() => {
     TaskController.getAll(Number(card_id)).then(() => setLoading(true))
   },[card_id])
 
@@ -36,7 +30,7 @@ const TaskPage = () => {
       <div className={'task-page__container'}>
         <SelectedTask.Provider value={{index: currentIndex, setIndex: setCurrentIndex}}>
           <TaskList/>
-          {currentIndex > -1 ? <TaskMenu  index={currentIndex}/> : null}
+          {currentIndex > -1 ? <TaskMenu/> : null}
         </SelectedTask.Provider>
       </div> : null}
     </div>
