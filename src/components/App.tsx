@@ -7,7 +7,6 @@ import {RootState} from "../store/store";
 import Navbar from "./Navbar/Navbar";
 import './App.scss'
 
-
 export interface HiddenI {
   hiddenNavbar: boolean,
   setHiddenNavbar: (x:boolean) => void,
@@ -24,6 +23,10 @@ export const Hidden = createContext<HiddenI>({
 })
 
 const App: FC = () => {
+
+
+
+
   const isAuth = useSelector((state: RootState) => state.user.isAuth)
   const [hiddenMenu, setHiddenMenu] = useState<boolean>(window.outerWidth < 765)
   const [hiddenNavbar, setHiddenNavbar] = useState<boolean>(window.outerWidth < 765)
