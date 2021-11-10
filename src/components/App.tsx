@@ -24,14 +24,9 @@ export const Hidden = createContext<HiddenI>({
 })
 
 const App: FC = () => {
-
   const isAuth = useSelector((state: RootState) => state.user.isAuth)
-
   const [hiddenMenu, setHiddenMenu] = useState<boolean>(window.outerWidth < 765)
   const [hiddenNavbar, setHiddenNavbar] = useState<boolean>(window.outerWidth < 765)
-
-
-
   const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
