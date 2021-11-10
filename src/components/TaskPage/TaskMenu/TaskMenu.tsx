@@ -40,6 +40,8 @@ const TaskMenu: FC = () => {
   const [completedTask, setCompletedTask] = useState<boolean>(false)
 
 
+
+
   useEffect(() => {
     if (task) {
       setTitle(task.title)
@@ -56,7 +58,7 @@ const TaskMenu: FC = () => {
 
 
   return task?.id ?
-    <div className={`task-menu ${task.title ? 'task-menu_active' : 'task-menu_none'}`}>
+    <div className={`task-menu ${window.outerWidth < 600? 'task-menu_active' : ''}`}>
 
       <div className={'task-menu__close'}>
         <div className={'task-menu__close_img'} onClick={(e) => {
@@ -93,7 +95,6 @@ const TaskMenu: FC = () => {
           <div className={'task-menu__info__deadline task-menu__info-border'}>
 
             <LocalizationProvider dateAdapter={AdapterDateMoment}>
-              {/*@ts-ignore*/}
               <DateTimePicker
                 renderInput={(props) => <TextField {...props} />}
                 value={date}

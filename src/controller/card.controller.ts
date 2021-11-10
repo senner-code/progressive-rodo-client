@@ -46,7 +46,8 @@ class CardController {
   static async delete(card_id:number): Promise<any>{
     try {
       console.log('Card ID - ', card_id)
-      return CardService.delete(card_id).then(() => {
+      return CardService.delete(card_id).then((data) => {
+        console.log(data)
         return store.dispatch(removeCard(card_id))
       })
     }catch (e) {

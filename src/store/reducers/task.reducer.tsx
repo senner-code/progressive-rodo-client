@@ -27,6 +27,15 @@ export const taskSlice = createSlice({
     deleteTask: (state, action:PayloadAction<indexI>) => {
       state.splice(action.payload.index, 1)
     },
+
+    clearTaskByCard: (state,action:PayloadAction<number>) => {
+      state.forEach((task, index) => {
+        if(task.card_id === action.payload){
+          state.splice(index,1)
+        }
+      })
+    }
+
   }
 })
 

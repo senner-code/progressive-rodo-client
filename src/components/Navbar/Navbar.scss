@@ -1,8 +1,12 @@
 .navbar {
   z-index: 0;
   background-color: rgba(157, 157, 157, 0.37);
-  width: 18%;
+  width: 250px;
   color: #1a1b1b;
+
+  &__burger {
+    padding: 10px 15px 0 15px;
+  }
 
   &__logout {
     margin-left: 5px;
@@ -129,5 +133,31 @@
       margin-right: 20px;
     }
   }
+}
+
+
+@media screen and (max-width: 950px) {
+  .navbar{
+    &_hidden {
+      display: none;
+    }
+    &_active {
+
+    }
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .navbar{
+    &_hidden {
+      display: none;
+    }
+    &_active {
+      width: 100%;
+    }
+  }
+
+
 
 }

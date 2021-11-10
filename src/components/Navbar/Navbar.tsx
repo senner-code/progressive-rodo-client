@@ -1,13 +1,18 @@
-import React, {FC, useRef, useState} from 'react';
+import React, {FC, useContext, useRef, useState} from 'react';
 import UserController, {User} from "../../controller/user.controller";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import CardList from "../CardList/CardList";
 import './Navbar.scss'
 import CardController from "../../controller/card.controller";
+import {Hidden} from "../App";
+
 
 const Navbar: FC = () => {
   const user_id = useSelector((state: RootState) => state.user.id)
+
+
+  const {hiddenNavbar, setHiddenNavbar} = useContext(Hidden)
 
   const add = () => {
     CardController.add(user_id, 'Untiled')
@@ -19,20 +24,21 @@ const Navbar: FC = () => {
 
   const [scroll, setScroll] = useState<boolean>(false)
 
-  const [hidden] = useState<boolean>(false)
-
   const user: User = useSelector((state: RootState) => state.user)
 
   return loading ?
-    <div className={!hidden ? 'navbar' : 'navbar navbar__hidden'}>
+    <div className={`navbar ${window.outerWidth < 950 ? hiddenNavbar ? 'navbar_hidden' : 'navbar_active': ''}`}>
       <div className="navbar__container">
-        {/*<div className="navbar__burger">*/}
-        {/*  <svg onClick={() => setHidden(!hidden)} fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"*/}
-        {/*       width="24px" height="24px">*/}
-        {/*    <path*/}
-        {/*      d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/>*/}
-        {/*  </svg>*/}
-        {/*</div>*/}
+        {window.outerWidth < 950 ?
+          <div className="navbar__burger">
+            <svg onClick={() => setHiddenNavbar(!hiddenNavbar)} fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 width="24px" height="24px">
+              <path
+                d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/>
+            </svg>
+          </div>
+          : null
+        }
         <div className={scroll ? 'navbar__user navbar__user_active' : 'navbar__user'}>
           <div className="navbar__user__logo">
             {user.name[0].toUpperCase()}

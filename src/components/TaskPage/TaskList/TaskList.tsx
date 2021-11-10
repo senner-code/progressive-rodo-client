@@ -17,9 +17,7 @@ import TextField from '@mui/material/TextField';
 const TaskList:FC = () => {
   const {card_id,card_name} = useParams<any>()
   const list = useSelector((state:RootState) => state.taskList)
-  const index = useContext(SelectedTask).index
-
-
+  const indexControl = useContext(SelectedTask)
   const [change, setChange] = useState<boolean>(false)
   const [title, setTitle] = useState<string>('')
   const [listName, setListName] = useState<string>('')
@@ -29,13 +27,13 @@ const TaskList:FC = () => {
 
   useEffect(() => {
     setListName(card_name)
-  },[card_name])
-
-  useEffect(() => {
-    if(deadline){
-
+    return () => {
+      setChange(false)
+      setListName('')
+      indexControl.setIndex(-1)
     }
-  },[deadline])
+    // eslint-disable-next-line
+  },[card_name])
 
   //ОПТИМИЗИРОВАТЬ (ЧЕРЕЗ  РЕФ наверное)
   const add = async () => {
@@ -44,15 +42,8 @@ const TaskList:FC = () => {
     })
   }
 
-  useEffect(() => {
-    return () => {
-      setChange(false)
-      setListName('')
-    }
-  },[])
-
   return (
-    <div className={`task-list ${index > -1 ? 'task-list_active' : 'task-list_none'}`}>
+    <div className={`task-list ${indexControl.index > -1 ? 'task-list_active' : 'task-list_none'}`}>
       <div className={'task-list__name'}>
         {change ?
           <div className={'task-list__title_active'}>

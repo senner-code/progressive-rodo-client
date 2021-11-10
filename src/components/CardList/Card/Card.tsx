@@ -1,7 +1,8 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useContext, useState} from 'react';
 import {Link} from "react-router-dom";
 import CardController, {CardI} from "../../../controller/card.controller";
 import './Card.scss'
+import {Hidden} from "../../App";
 
 
 interface CardTest extends CardI {
@@ -11,10 +12,15 @@ interface CardTest extends CardI {
 
 const Card:FC<CardTest> = ({id,name, setActive,active}) => {
   const [menu, setMenu] = useState<boolean>(false)
+  const {hiddenNavbar, setHiddenNavbar} = useContext(Hidden)
+
 
   return (
     <div className={`card`}>
-      <div onClick={() => setActive(id)} className={`card-container ${active === id ? 'card-container_active' : ''}`} key={id}>
+      <div onClick={() => {
+        setHiddenNavbar(!hiddenNavbar)
+        setActive(id)
+      }} className={`card-container ${active === id ? 'card-container_active' : ''}`} key={id}>
         <Link className={'card__link'} to={`/dashboard/card/${id}/${name}`}>
           <svg className={'card__link-svg'} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
             <g id="Layer_2">

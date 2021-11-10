@@ -1,10 +1,14 @@
 .task-menu {
-  width: 30%;
+  min-width: 350px;
   box-sizing: border-box;
   background-color: #F2f2f2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &_active {
+    width: 100%;
+  }
 
   &__checkbox {
     width: 30px;
@@ -150,3 +154,4 @@
   }
 
 }
+
