@@ -33,8 +33,16 @@ const Card:FC<CardTest> = ({id,name, setActive,active}) => {
             <p className={'card__link__name'}>{name}</p>
           </div>
         </Link>
-        <svg className={'card__svg'} onClick={() => {
-          setMenu(!menu)
+        <svg className={'card__svg'} onClick={(e) => {
+          e.stopPropagation()
+
+          if(active !== id){
+            setActive(id)
+            setMenu(true)
+          }else {
+            setMenu(!menu)
+          }
+
         }} viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <circle cx="5" cy="6"  r="2" stroke="#000000"/>
           <circle cx="5" cy="16" r="2" stroke="#000000"/>
