@@ -1,6 +1,6 @@
 import axios, {AxiosInstance} from "axios";
 import {UserRes} from "../service/user.service";
-export const API_URL = process.env.REACT_APP_SERVER_HOST;
+export const API_URL = 'http://localhost:5000';
 
 const $api:AxiosInstance = axios.create({
   withCredentials: true,
@@ -23,11 +23,12 @@ $api.interceptors.response.use((config => {
     throw error
   }
   const originalRequest = error.config
-
-  if(error.response.status === 401 && error.config && !error.config._isRetry) {
+  originalRequest.credentials = 'include'
+  if(error.response.status === 401 && error.config && !error.config._isRetry && originalRequest.credentials === 'include') {
     originalRequest._isRetry = true
-
-    const response:UserRes = (await axios.get(`${API_URL}/user/refresh`, {withCredentials: true})).data
+    const response:UserRes = (await axios.get(`${API_URL}/user/refresh`, {
+      withCredentials: true
+    })).data
     localStorage.setItem('token', response.tokens.accessToken)
     return $api.request(originalRequest)
   }
