@@ -1,4 +1,9 @@
 .navbar {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently*/
   z-index: 0;
   background-color: rgba(157, 157, 157, 0.37);
   width: 250px;
@@ -109,6 +114,7 @@
   }
 
   &_add {
+    cursor: pointer;
     z-index: 0;
     border-top: 1px solid rgba(114, 114, 114, 0.35);
     position: relative;
