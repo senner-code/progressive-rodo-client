@@ -57,7 +57,16 @@ const TaskList:FC = () => {
       <div className={'task-list__container'}>
         {list.map((task,index) => <Task key={task.id} task={task} index={index}/>)}
       </div>
-      <div className={'task task-list__add'} onKeyDown={event => title ? event.keyCode === 13 ? add().then() : null :null}>
+      <div className={'task task-list__add'} onKeyDown={event => {
+        if(title) {
+          if(event.keyCode === 13){
+            add().then()
+            setCalendar(!calendar)
+            setDeadline(null)
+          }
+        }
+
+      }}>
         <div className={`task-list__add_start ${calendar ? 'task-list__add_start_active':''}`}>
           <div className={'task__checkbox'}/>
           <Input class={`task-list_input`} type={'text'} placeholder={'Add task'} value={title} setValue={setTitle}/>

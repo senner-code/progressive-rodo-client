@@ -28,17 +28,16 @@ export const taskSlice = createSlice({
       state.splice(action.payload.index, 1)
     },
 
-    clearTaskByCard: (state,action:PayloadAction<number>) => {
-      state.forEach((task, index) => {
-        if(task.card_id === action.payload){
-          state.splice(index,1)
-        }
-      })
+    clearTaskList: (state) => {
+      const length = state.length
+      for (let i = 0; i < length; i++) {
+        state.pop()
+      }
     }
 
   }
 })
 
-export const {setTaskList, changeTask, addTask, deleteTask} = taskSlice.actions
+export const {setTaskList, changeTask, addTask, deleteTask, clearTaskList} = taskSlice.actions
 
 export default taskSlice.reducer

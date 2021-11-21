@@ -43,6 +43,7 @@ const TaskMenu: FC = () => {
 
 
   useEffect(() => {
+    setChange(false)
     if (task) {
       setTitle(task.title)
     }
@@ -53,7 +54,6 @@ const TaskMenu: FC = () => {
       )
     }
     setCompletedTask(task?.completed)
-
   }, [task])
 
 
@@ -82,8 +82,10 @@ const TaskMenu: FC = () => {
                     setChange(false)})}}
               }>Confirm
               </button>
-            </div> :
-            <p className={'task-menu__info__title-page__text'}><b onClick={() => setChange(true)}>{task.title}</b></p>}
+            </div>
+            :
+            <p className={'task-menu__info__title-page__text'}><b onClick={() => setChange(true)}>{task.title}</b></p>
+          }
         </div>
         <div className="task-menu__info__day task-menu__info-border">
           <svg className={'navbar__features__sun'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px">

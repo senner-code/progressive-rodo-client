@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../store/store";
 import Navbar from "./Navbar/Navbar";
 import './App.scss'
+import {useObserveSize} from "../utils/Hooks";
 
 export interface HiddenI {
   hiddenNavbar: boolean,
@@ -23,14 +24,16 @@ export const Hidden = createContext<HiddenI>({
 })
 
 const App: FC = () => {
-
-
-
-
   const isAuth = useSelector((state: RootState) => state.user.isAuth)
-  const [hiddenMenu, setHiddenMenu] = useState<boolean>(window.outerWidth < 765)
-  const [hiddenNavbar, setHiddenNavbar] = useState<boolean>(window.outerWidth < 765)
+  const [hiddenMenu, setHiddenMenu] = useState<boolean>(false)
+  const [hiddenNavbar, setHiddenNavbar] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
+  const [ref, width] = useObserveSize()
+
+  useEffect(() => {
+    setHiddenMenu(width < 765)
+    setHiddenNavbar(width < 765)
+  },[width])
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -43,7 +46,7 @@ const App: FC = () => {
   }, [])
 
   return (
-    <div className={`app`}>
+    <div ref={ref} className={`app`}>
       <Hidden.Provider value={{hiddenMenu, setHiddenMenu, setHiddenNavbar,hiddenNavbar}}>
         {loading ?
           <React.Fragment>
