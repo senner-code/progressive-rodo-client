@@ -28,7 +28,7 @@ const TaskPage:FC= () => {
 
   return (
     <SelectedTask.Provider value={{index: currentIndex, setIndex: setCurrentIndex}}>
-    <div className={`task-page ${ window.outerWidth < 950 ? hiddenNavbar ? 'task-page_active' : 'task-page_hidden' : ''} `}>
+    <div className={`task-page ${ window.outerWidth < 950 ? hiddenNavbar? 'task-page_active' : 'task-page_hidden' : ''} `}>
 
       {(window.outerWidth < 950 && hiddenNavbar && currentIndex === -1)?
         <div className={`task-page__burger`}>

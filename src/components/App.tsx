@@ -31,8 +31,8 @@ const App: FC = () => {
   const [ref, width] = useObserveSize()
 
   useEffect(() => {
-    setHiddenMenu(width < 765)
-    setHiddenNavbar(width < 765)
+    setHiddenMenu(width < 820)
+    setHiddenNavbar(width < 820)
   },[width])
 
   useEffect(() => {

@@ -27,7 +27,7 @@ const Navbar: FC = () => {
   const user: User = useSelector((state: RootState) => state.user)
 
   return loading ?
-    <div className={`navbar ${window.outerWidth < 950 ? hiddenNavbar ? 'navbar_hidden' : 'navbar_active': ''}`}>
+    <div className={`navbar ${window.outerWidth < 950 ? hiddenNavbar  ? 'navbar_hidden' : 'navbar_active': ''}`}>
       <div className="navbar__container">
         {window.outerWidth < 950 ?
           <div className="navbar__burger">
